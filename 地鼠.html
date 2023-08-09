@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>打地鼠遊戲</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, user-scalable=1">
+  <style>
+    html {
+      width: 100%;
+      height: 100%;
+      
+    }
+  
+    body {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      background-image: url("image/草地.jpg") ;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 100%;
+    }
+  
+    .game-board {
+      border: 1px solid #000;
+      position: relative;
+      margin: 0 auto;
+      max-width: 80vh;
+      max-height: 80vh;
+      width: 80%;
+      aspect-ratio: 1/1;
+    }
+  
+    .hole {
+      width: 25%;
+      height: 25%;
+      background-color: rgb(254, 254, 254);
+      border-radius: 50%;
+      position:relative;
+      top: 0;
+      left: 0;  
+      cursor: pointer;
+    }
+  
+    button {
+      display: block;
+      margin: 5% auto;
+      width: 50%;
+      height: 10%;
+    }
+  
+    img{
+      width: 100%;
+      height: 10vh;
+    }
+    
+  </style>
+  <script>
+    var score = 0;
+    var timer = 60;
+    var holenumber=0;
+    var countdown;
+    var start = document.getElementById('start');
+    function startGame() 
+    {    
+      clearInterval(countdown);   
+       
+      score = 0;
+      timer = 60;
+      updateScore(0);
+      updateTimer(timer);
+      countdown ;
+      var holes = document.getElementsByClassName('hole');
+      var bool=document.getElementsByClassName('hole');
+      var img = document.getElementsByClassName('image');
+      for (var i = 0; i < holes.length; i++) {
+      holes[i].onclick = function() {
+        var clickedHole = this;
+        var clickedImage = clickedHole.querySelector('.image');
+  
+        if (clickedImage.src.includes("地鼠1.png")) {console("+1");}
+        //if (img[i].src=="image/地鼠1.png") {console("+1");}
+        score++;
+        updateScore(score);
+        
+      }
+      }
+
+      countdown = setInterval(function() {
+        timer--;
+        updateTimer(timer);
+        if (timer === 0) {
+          clearInterval(countdown);
+          alert('遊戲結束！您的分數是 ' + score);
+        }
+      }, 1000);
+      if(holenumber==0)
+      {
+      showRandomHole();
+      holenumber++;
+      }
+    }
+  
+    function showRandomHole() {
+  if (timer != 0) {
+    var holes = document.getElementsByClassName('hole');
+    var randomIndex = Math.floor(Math.random() * holes.length);
+    var hole = holes[randomIndex];
+    var images = document.getElementsByClassName('image');
+
+    for (var i = 0; i < images.length; i++) {
+      images[i].src = "image/地鼠3.png";
+    }
+
+    var image = images[randomIndex];
+    image.src = "image/地鼠1.png";
+    holenumber++;
+
+    setTimeout(function() {
+      image.src = "image/地鼠3.png";
+      holenumber--;
+      showRandomHole();
+    }, Math.random() * 1000 + 1000);
+  }
+}
+   
+    function updateScore(score) {
+      document.getElementById('score').textContent = '分數：' + score;
+    }
+
+    function updateTimer(timer) {
+      document.getElementById('timer').textContent = '倒數計時：' + timer;
+    }
+    
+  </script>
+</head>
+<body>
+  <h1 class="fs-1"><strong>打地鼠遊戲</strong></h1>
+  <div id="timer">時間:60</div>
+  <div id="score">分數：0</div>
+  <table class="game-board" >
+    <tr>
+        <td class="hole">1<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">2<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">3<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">4<img class="image" src="image\地鼠3.png"></td>
+    </tr>
+    <tr>
+        <td class="hole">5<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">6<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">7<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">8<img class="image" src="image\地鼠3.png"></td>
+    </tr>
+    <tr>
+        <td class="hole">9<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">10<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">11<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">12<img class="image" src="image\地鼠3.png"></td>
+    </tr>
+    <tr>
+        <td class="hole">13<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">14<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">15<img class="image" src="image\地鼠3.png"></td>
+        <td class="hole">16<img class="image" src="image\地鼠3.png"></td>
+    </tr>
+  </table>
+
+  <button id="start" onclick="startGame()" class="btn btn-outline-danger" style="align-self: center;">開始遊戲</button>
+</body>
+
+</html>
