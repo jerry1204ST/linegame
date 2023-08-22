@@ -36,14 +36,14 @@
       max-width: 80vh;
       max-height: 80vh;     
       height:100%;
-      /*width: 80%;*/
+      width: 80%;
       aspect-ratio: 1/1;
     }
-    
+
 
     .hole {
-      width: 25%;
-      height: 25%;
+      width: 100%/3;
+      height: 100%/3;
       background-color: rgb(254, 254, 254);
       border-radius: 50%;
       position:relative;
@@ -61,7 +61,7 @@
   
     img{
       width: 100%;
-      height: 10vh;
+      height: 50%;
     }
     
     #myAudio {
@@ -105,10 +105,10 @@
     #explain{
       text-align: center;
       display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  height: 85%;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 85%;
     }
    
     @media (max-width: 800px){
@@ -153,7 +153,7 @@
 <body>
   <h1 class="fs-1"><strong>Whack-a-mole Game</strong></h1>
   <div>
-  <div id="timer">Time:60</div>
+  <div id="timer">Time:40</div>
   <div id="score">Score:0</div>
   </div>
   <button id="illustrate"  class="btn btn-primary" onclick="showPopup()">說明</button>
@@ -161,9 +161,9 @@
   <div class="popup-container" id="popup"  >  
     <h2 style="font-weight:bold;">遊戲說明</h2>
     <div id="explain">
-    <p >點擊地鼠<img id="ex" src="image\rat1.png">，
-        阻止他們破壞草地，
-        每擊退一隻地鼠可以獲得1分，
+    <p >點擊<img id="ex" src="image\rat\ratgame_13.png">，
+        阻止他們作亂，
+        每擊退一隻可以獲得1分，
         在60秒內取得高分吧!</p>
     
     </div>
@@ -171,29 +171,21 @@
   </div>
   <table class="game-board" >
     <tr>
-        <td class="hole">1<img class="image" src="image\rat3.png"></td>
-        <td class="hole">2<img class="image" src="image\rat3.png"></td>
-        <td class="hole">3<img class="image" src="image\rat3.png"></td>
-        <td class="hole">4<img class="image" src="image\rat3.png"></td>
+        <td class="hole"><img class="image" src="image\rat\ratgame_15.png"></td>
+        <td class="hole"><img class="image" src="image\rat\ratgame_15.png"></td>
+        <td class="hole"><img class="image" src="image\rat\ratgame_15.png"></td>     
     </tr>
     <tr>
-        <td class="hole">5<img class="image" src="image\rat3.png"></td>
-        <td class="hole">6<img class="image" src="image\rat3.png"></td>
-        <td class="hole">7<img class="image" src="image\rat3.png"></td>
-        <td class="hole">8<img class="image" src="image\rat3.png"></td>
+        <td class="hole"><img class="image" src="image\rat\ratgame_15.png"></td>       
+        <td class="hole"><img class="image" src="image\rat\ratgame_15.png"></td>
+        <td class="hole"><img class="image" src="image\rat\ratgame_15.png"></td>
     </tr>
     <tr>
-        <td class="hole">9<img class="image" src="image\rat3.png"></td>
-        <td class="hole">10<img class="image" src="image\rat3.png"></td>
-        <td class="hole">11<img class="image" src="image\rat3.png"></td>
-        <td class="hole">12<img class="image" src="image\rat3.png"></td>
+        <td class="hole"><img class="image" src="image\rat\ratgame_15.png"></td>
+        <td class="hole"><img class="image" src="image\rat\ratgame_15.png"></td>
+        <td class="hole"><img class="image" src="image\rat\ratgame_15.png"></td>
     </tr>
-    <tr>
-        <td class="hole">13<img class="image" src="image\rat3.png"></td>
-        <td class="hole">14<img class="image" src="image\rat3.png"></td>
-        <td class="hole">15<img class="image" src="image\rat3.png"></td>
-        <td class="hole">16<img class="image" src="image\rat3.png"></td>
-    </tr>
+   
   </table>
 
   <button id="start" onclick="startGame()" class="btn btn-danger" style="align-self: center;">start</button>
@@ -221,7 +213,7 @@
 </body>
 <script>
     var score = 0;
-    var timer = 60;
+    var timer = 39;
     var holenumber=0;
     var countdown;
     var count=0;
@@ -236,7 +228,7 @@
       clearInterval(countdown);   
       audio2.play();
       score = 0;
-      timer = 60;
+      timer = 39;
       count=0;
       updateScore(0);
       updateTimer(timer);
@@ -248,39 +240,36 @@
       holes[i].onclick = function() {
         var clickedHole = this;
         var clickedImage = clickedHole.querySelector('.image');      
-        if (clickedImage.src.indexOf("image/rat1.png") !== -1) {
+        if (clickedImage.src.indexOf("image/rat/ratgame_13.png") !== -1) {
         // 是指定的圖片
         score++;        
         audio.play();
         updateScore(score);
-        clickedImage.src = "image/rat21.png";
+        clickedImage.src = "image/rat/ratgame_14.png";
      setTimeout(function() {
-        clickedImage.src = "image/rat3.png";
+        clickedImage.src = "image/rat/ratgame_15.png";
       }, 2000);
         count++; 
         } else {
         // 不是指定的圖片
-        audio3.play();
+        audio3.play(); 
+        console.log("Clicked image source:", clickedImage.src);
+
         }
       }
       }
      
       countdown = setInterval(function() {
         timer--;
-        console.log(holenumber);
-        console.log(count);
-        if( timer==45)
-      {
-        showRandomHole();
-        holenumber++;
-        count++;
-      }if( timer==25)
+        //console.log(holenumber);
+        //console.log(count);
+       if( timer==30)
       {
         showRandomHole();
         holenumber++;
         count++;
       }
-      if( timer==10)
+      if( timer==15)
       {
         showRandomHole();
         holenumber++;
@@ -306,7 +295,7 @@
       }
     }
     function redirectToFinalScore(score) {
-      const url = `ratScore.html?score=${score}`;
+      const url = `ratScore2.html?score=${score}`;
       window.location.href = url;
     }
     function showRandomHole() {
@@ -317,11 +306,11 @@
     var images = document.getElementsByClassName('image');
 
     var image = images[randomIndex];
-    image.src = "image/rat1.png";
+    image.src = "image/rat/ratgame_13.png";
     holenumber++;
 
     setTimeout(function() {
-      image.src = "image/rat3.png";
+      image.src = "image/rat/ratgame_15.png";
       holenumber--;
       showRandomHole();
     }, Math.random() * 1000 + 1000);
