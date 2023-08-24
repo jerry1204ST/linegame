@@ -15,7 +15,7 @@
   
     body {
       width: 100%;
-      /*height: 100%;*/
+      height: 100%;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -25,16 +25,18 @@
       background-image: url("image/grass.jpg") ;
       background-size: cover;
       background-repeat: no-repeat;
-      height: 100%;
     }
-  
+    #title {
+    position: relative;
+    top: 10px; /* You can adjust this value as needed */
+  }
     .game-board {
       /*border: 1px solid #000;*/
       position: relative;
       margin: 0 auto;
       max-width: 60vh;
       max-height: 60vh;     
-      height:100%;
+      height:90%;
       width: 80%;
       aspect-ratio: 1/1;
     }
@@ -53,9 +55,10 @@
   
     #start {
       display: block;
+      text-align: center;
       margin: 5% auto;
       width: 20%;
-      height: 05%;
+      height: 5%;
     }
   
     img{
@@ -85,7 +88,7 @@
       border-radius: 10px;
       overflow: scroll;
     }
-   
+    
     .close-btn {
       position: absolute;
       top: 5px;
@@ -109,8 +112,8 @@
       align-items: center;
       height: 85%;
     }
-   
-    @media (max-width: 800px){
+    
+    @media (max-width: 800px ), (max-height: 600px) {
     .game-board {
       /*border: 1px solid #000;*/
       position: relative;
@@ -145,12 +148,48 @@
       border-radius: 10px;
       overflow: scroll;
     }
+    #title {
+  position: relative;
+  top: 10px;
+  width: 100%; /* Set the title to take full width */
+  text-align: center;
+  font-size: 24px; /* Adjust font size as needed */
+  white-space: nowrap;
+  text-overflow: ellipsis;
   }
+  #timer,#score {
+    top: 10px;
+    width: 100%;
+    text-align: center;
+    font-size: 16px; /* Adjust font size for smaller screens */
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  #start {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  padding: 10px 0;
+  font-size: 16px;
+  width: 20%;
+  height: 5%;
+  max-width: 100px;
+  max-height: 50px;
+  white-space: nowrap;
+  text-overflow: ellipsis; /* Add this to truncate text with an ellipsis */
+  overflow: hidden;
+  }
+}
   </style>
   
 </head>
 <body>
-  <h1 class="fs-1"><strong>Whack-a-mole Game</strong></h1>
+  <h1 class="fs-1" id="title"><strong> </strong></h1>
+  <h1 class="fs-1" id="title"><strong>打地鼠</strong></h1>
   <div>
   <div id="timer">Time:40</div>
   <div id="score">Score:0</div>
@@ -187,7 +226,7 @@
    
   </table>
 
-  <button id="start" onclick="startGame()" class="btn btn-danger" style="align-self: center;">start</button>
+  <button id="start" onclick="startGame()" class="btn btn-danger" style="align-self: center;">開始</button>
   
   <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
