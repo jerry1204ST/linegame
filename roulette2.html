@@ -196,27 +196,27 @@ p {
     </div>
     <table class="table-bordered border-warning" id="main">
         <tr>
-            <td id="td0"><img id="img" src="image\roulette\roulette_12.png" alt="圖片1"></td>
-            <td id="td1"><img id="img" src="image\roulette\roulette_11.png" alt="圖片1"></td>
-            <td id="td2"><img id="img" src="image\roulette\roulette_10.png" alt="圖片1"></td>
-            <td id="td3"><img id="img" src="image\roulette\roulette_09.png" alt="圖片1"></td>
+            <td id="td0"><img id="img" src="image\roulette\roulette_01.png" alt="圖片1"></td>
+            <td id="td1"><img id="img" src="image\roulette\roulette_02.png" alt="圖片1"></td>
+            <td id="td2"><img id="img" src="image\roulette\roulette_03.png" alt="圖片1"></td>
+            <td id="td3"><img id="img" src="image\roulette\roulette_04.png" alt="圖片1"></td>
         </tr>
         <tr>
-            <td id="td11"><img id="img" src="image\roulette\roulette_01.png" alt="圖片1"></td>
+            <td id="td11"><img id="img" src="image\roulette\roulette_12.png" alt="圖片1"></td>
             <td rowspan="2" colspan="2" id="center">
                 <button id="start" type="button" class="btn " ><img id="startbtn" src="image\button.png" alt="Image Button"></button>
             </td>
-            <td id="td4"><img id="img" src="image\roulette\roulette_08.png" alt="圖片1"></td>
+            <td id="td4"><img id="img" src="image\roulette\roulette_05.png" alt="圖片1"></td>
         </tr>
         <tr>
-            <td id="td10"><img id="img" src="image\roulette\roulette_02.png" alt="圖片1"></td>
-            <td id="td5"><img id="img" src="image\roulette\roulette_07.png" alt="圖片1"></td>
+            <td id="td10"><img id="img" src="image\roulette\roulette_11.png" alt="圖片1"></td>
+            <td id="td5"><img id="img" src="image\roulette\roulette_06.png" alt="圖片1"></td>
         </tr>
         <tr>
-            <td id="td9"><img id="img" src="image\roulette\roulette_03.png" alt="圖片1"></td>
-            <td id="td8"><img id="img" src="image\roulette\roulette_04.png" alt="圖片1"></td>
-            <td id="td7"><img id="img" src="image\roulette\roulette_05.png" alt="圖片1"></td>
-            <td id="td6"><img id="img" src="image\roulette\roulette_06.png" alt="圖片1"></td>
+            <td id="td9"><img id="img" src="image\roulette\roulette_10.png" alt="圖片1"></td>
+            <td id="td8"><img id="img" src="image\roulette\roulette_09.png" alt="圖片1"></td>
+            <td id="td7"><img id="img" src="image\roulette\roulette_08.png" alt="圖片1"></td>
+            <td id="td6"><img id="img" src="image\roulette\roulette_07.png" alt="圖片1"></td>
         </tr>   
     </table>
 <audio id="myAudio" src="audio/choose.mp3" controls >      
@@ -275,7 +275,7 @@ p {
         
         for (let i = 0; i < 12; i++) {
             //tds[i].innerHTML = 12-i;
-            tds[i].innerHTML = `<img id="img" src="image/roulette/roulette_${(12 - i).toString().padStart(2, '0')}.png" alt="圖片${i + 1}">`;       
+            tds[i].innerHTML = `<img id="img" src="image/roulette/roulette_${(i+1).toString().padStart(2, '0')}.png" alt="圖片${i + 1}">`;       
         }
         init();
         start.removeEventListener('click', gogoLuck, false);
@@ -357,7 +357,7 @@ p {
         // 发送GET请求获取中奖号码
         $.ajax({
             type: 'GET',
-            url: 'php/winnerdata.php', // 替换为你的PHP脚本路径           
+            url: 'https://usrgamer2023.000webhostapp.com/winnerdata.php', // 替换为你的PHP脚本路径           
             dataType: 'json',
             success: function(response) {
                 //var maxNum = response; // 将中奖号码赋值给maxNum
@@ -365,9 +365,11 @@ p {
                 tar= response.data2;
                 console.log(info);
                 console.log(tar);
+                tar=13-tar;
             },
             error: function() {
                 console.log('Error occurred during AJAX request.');   
+                window.location.reload();
                 let randomIndex = Math.floor(Math.random() * Array2.length);
                 let randomValue = Array2[randomIndex];               
                 tar= randomValue;
