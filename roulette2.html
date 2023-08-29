@@ -148,7 +148,7 @@ p {
 }
 </style>  
 </head>
-<body>
+<body> 
     <button id="illustrate" type="button" class="btn btn-primary" onclick="showPopup()">說明</button>
     <div class="popup-container" id="popup">       
         <h1>遊戲說明</h1>
@@ -235,7 +235,7 @@ p {
       </div>
     </div>
   </div>
- 
+    
   
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
@@ -265,7 +265,7 @@ p {
     for (let i = 0; i < 12; i++) {
         tds[i] = document.getElementById(`td${i}`);
     }
-    // 按钮功能还有防呆和重置归零
+    // 按钮功能重置归零
     function gogoLuck() {
         tds[num].innerHTML = num + 1;
         tds[num].style.backgroundColor = "#fff";
@@ -275,7 +275,6 @@ p {
         num = 0;
         
         for (let i = 0; i < 12; i++) {
-            //tds[i].innerHTML = 12-i;
             tds[i].innerHTML = `<img id="img" src="image/roulette/roulette_${(i+1).toString().padStart(2, '0')}.png" alt="圖片${i + 1}">`;       
         }
         init();
@@ -370,13 +369,14 @@ p {
             },
             error: function() {
                 console.log('Error occurred during AJAX request.');   
-                window.location.reload();
+                
                 let randomIndex = Math.floor(Math.random() * Array2.length);
                 let randomValue = Array2[randomIndex];               
                 tar= randomValue;
                 info= Array1[tar-1];
                 console.log(info);
                 console.log(tar);
+                window.location.reload();
             }
         });
         init(); // 初始化游戏
