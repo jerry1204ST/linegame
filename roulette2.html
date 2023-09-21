@@ -310,6 +310,7 @@ p {
         }
         var modalContent = document.querySelector('.modal-content');
         if (maxNum == tar) {
+            document.getElementById("start").removeAttribute("disabled");
             if(tar>7){
             tds[num].innerHTML = info;
             clearInterval(timeclock);
@@ -353,6 +354,7 @@ p {
     // 按钮点击事件
     start.click(function() {
         
+        document.getElementById("start").setAttribute("disabled", "disabled");
         // 发送GET请求获取中奖号码
         $.ajax({
             type: 'GET',
