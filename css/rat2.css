@@ -13,7 +13,7 @@ body {
     align-items: stretch;
     text-align: center;
     overflow: scroll; 
-    background-image: url("../image/rat/oceanbackgroung.png") ;
+    background-image: url("../image/rat2/greenbackgroung.png") ;
     background-attachment:fixed;
     background-size: cover;
     background-repeat: no-repeat;
@@ -56,7 +56,7 @@ body {
   display: none;
 }
 .popup-container {
-    background-image: url("../image/rat/marineborder.png");  
+    background-image: url("../image/rat2/green1.png");  
     background-size:100% 100%;
     display: none;
     position: absolute;

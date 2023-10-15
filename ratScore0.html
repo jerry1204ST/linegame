@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Final Score</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-image: url("image/rat2/greenbackgroung.png") ;     
+      background-size: cover;     
+      background-repeat: no-repeat;
+      background-attachment: fixed; 
+      background-color: #f8f9fa;
+    }
+
+    .container {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-image: url("image/rat2/green.png");  
+      background-size:100% 100%;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background-color: rgba(255, 255, 255, 1);
+      padding: 20px;
+      border: 1px solid #ccc;
+      z-index: 9999;
+      width: 90vw; /* 調整寬度 */
+      height: 90vw; /* 調整高度 */
+      border-width:3px;
+      border-color:black;
+      border-radius: 10px;
+
+      max-width: 600px;
+      max-height: 600px;
+    }
+
+    .score-container {
+      text-align: center;
+    }
+
+    .score {
+      font-size: 48px;
+      font-weight: bold;
+      margin-bottom: 30px;
+    }
+
+    .btn {
+      font-size: 24px;
+      padding: 10px 30px;
+    }
+
+   
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="score-container">
+      <h1>Final Score</h1> 
+      <div class="score" id="scoreValue"></div>
+      <a href="#" class="btn btn-primary" onclick="restartGame()">Play Again</a>
+    </div>
+  </div>
+
+  <script>
+    // Your JavaScript code here
+    const urlParams = new URLSearchParams(window.location.search);
+    const score = urlParams.get('score');
+    console.log(score);
+    document.getElementById('scoreValue').innerText = score;
+    function restartGame() {
+      window.location.href = "ratgameusr2.html";
+    }
+  </script>
+</body>
+</html>
