@@ -11,6 +11,7 @@
 
     function startGame() 
     {    
+      document.getElementById("start").setAttribute("disabled", "disabled");  
       clearInterval(countdown);   
       document.getElementById("myAudio2").play();
       score = 0;
@@ -64,6 +65,7 @@
           document.getElementById('message').innerHTML="Game over! Your score is "+ score ;
           document.getElementById("myAudio2").pause();
           document.getElementById("myAudio2").currentTime = 0;
+          
           redirectToFinalScore(score);
           // Redirect to the final score page
         }
@@ -109,7 +111,7 @@
     }
     function showPopup() {
       var popup = document.getElementById("popup");
-      popup.style.display = "block";
+      popup.style.display = "flex";
     }
 
     function hidePopup() {
