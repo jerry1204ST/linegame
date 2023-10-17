@@ -5,7 +5,7 @@ html {
     }
 
 body {   
-    background-image:url("../image/lottary.jpg");
+    background-image:url("../image/lottery/lotterybackground.png");
     background-attachment:fixed;
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -63,7 +63,7 @@ p {
   max-height: 100%;
 }
 .popup-container {    
-      background-image: url("../image/win.jpg");  
+      background-image: url("../image/lottery/paper.jpg");  
       background-size:100% 100%;
       display: none;
       position: fixed;
@@ -101,3 +101,7 @@ p {
     #start{
         padding: none;
 }
+    #title{
+        width: 40vw;
+        max-width: 400px;
+    }
