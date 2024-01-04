@@ -5,7 +5,7 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-image: url("image/grass.jpg") ;     
+      background-image: url("image/rat2/greenbackgroung.png") ;     
       background-size: cover;     
       background-repeat: no-repeat;
       background-attachment: fixed; 
@@ -17,10 +17,9 @@
       display: flex;
       justify-content: center;
       align-items: center;
-
-      background-image: url("image/mood2.jpg");  
+      background-image: url("image/rat2/green.png");  
       background-size:100% 100%;
-      position: fixed;
+      position: absolute;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
@@ -28,12 +27,14 @@
       padding: 20px;
       border: 1px solid #ccc;
       z-index: 9999;
-      width: 95%; /* 調整寬度 */
-      height: 70%; /* 調整高度 */
+      width: 90vw; /* 調整寬度 */
+      height: 90vw; /* 調整高度 */
       border-width:3px;
       border-color:black;
       border-radius: 10px;
-      overflow: scroll;
+
+      max-width: 600px;
+      max-height: 600px;
     }
 
     .score-container {
@@ -51,58 +52,7 @@
       padding: 10px 30px;
     }
 
-    @media (max-width: 800px){
-        body {
-          background-image: url("image/grass.jpg") ;     
-      background-size: cover;     
-      background-repeat: no-repeat;
-      background-attachment: fixed; 
-      background-color: #f8f9fa;
-    }
-
-    .container { 
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      background-image: url("image/mood2.jpg");  
-      background-size:100% 100%;
-      position: fixed;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(255, 255, 255, 1);
-      padding: 20px;
-      border: 1px solid #ccc;
-      z-index: 9999;
-      width: 95%; /* 調整寬度 */
-      height: 70%; /* 調整高度 */
-      border-width:3px;
-      border-color:black;
-      border-radius: 10px;
-      overflow: scroll;
-    }
-
-    .score-container {
-      text-align: center;
-      width: 100%;
-      height:50%;
-    }
-
-    .score {
-      font-size: 48px;
-      font-weight: bold;
-      margin-bottom: 30px;
-    }
-
-    .btn {
-      font-size: 24px;
-      padding: 10px 30px;
-    }
-      
-    }
-
+   
   </style>
 </head>
 <body>
@@ -121,7 +71,7 @@
     console.log(score);
     document.getElementById('scoreValue').innerText = score;
     function restartGame() {
-      window.location.href = "ratgame2.html";
+      window.location.href = "ratgameusr2.html";
     }
   </script>
 </body>

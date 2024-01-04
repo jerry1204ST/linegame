@@ -79,7 +79,7 @@
     }
    
     function redirectToFinalScore(score) {
-      const url = `ratScore0.html?score=${score}`;
+      const url = `ratScore2.html?score=${score}`;
       window.location.href = url;
     }
 
